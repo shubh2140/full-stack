@@ -1,0 +1,94 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "My Express API Documentation",
+      "version": "1.0.0"
+    },
+    "basePath": "/",
+    "paths": {
+      "/api/data": {
+        "get": {
+          "summary": "Get data from the database",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/DataItem"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/data-store": {
+        "post": {
+          "summary": "Create a new resource",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "formData",
+              "description": "ID of the resource",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "name",
+              "in": "formData",
+              "description": "Name of the resource",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "age",
+              "in": "formData",
+              "description": "Age of the resource",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "email",
+              "in": "formData",
+              "description": "Email of the resource",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Resource created successfully"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "DataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  
